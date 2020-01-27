@@ -1,13 +1,12 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from "react-helmet";
+import scrollTo from "gatsby-plugin-smoothscroll";
 import { Button, H1 } from "../../components/index";
 import { Row, Col } from "../../components/Grid";
 import RegisterModal from "./_components/RegisterModal";
 import LoginModal from "./_components/LoginModal";
 import theme from "../../theme";
-import smoothScroll from "smooth-scroll";
-smoothScroll('a[href*="#"]');
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -279,7 +278,7 @@ class Landing extends React.Component {
           </div>
           <ul className="menu">
             <li>
-              <a href="#home">Home</a>
+              <a onClick={() => scrollTo("#home")}>Home</a>
             </li>
             <span>|</span>
             <li>
@@ -299,11 +298,11 @@ class Landing extends React.Component {
             </li>
             <span>|</span>
             <li>
-              <a href="#faq">Perguntas Frequentes</a>
+              <a onClick={() => scrollTo("#faq")}>Perguntas Frequentes</a>
             </li>
             <span>|</span>
             <li>
-              <a href="#regulamento">Regulamento</a>
+              <a onClick={() => scrollTo("#regulamento")}>Regulamento</a>
             </li>
           </ul>
         </Nav>
