@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import axios from "axios";
 import { Helmet } from "react-helmet";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import { Button, H1 } from "../../components/index";
@@ -8,6 +9,7 @@ import RegisterModal from "./_components/RegisterModal";
 import LoginModal from "./_components/LoginModal";
 import theme from "../../theme";
 import { handleCloudinaryUpload } from "../../helpers";
+import { navigate } from "gatsby";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -245,10 +247,39 @@ const Footer = styled.footer`
   }
 `;
 
+const ADD_USER_MUTATION = user => `
+mutation {
+  addUser(user: {
+    name: "${user.name}"
+    email: "${user.email}"
+    phone: "${user.phone}"
+    password: "${user.password}"
+    role: "CLIENT"
+
+    cro: "${user.cro}"
+    cpf: "${user.cpf}"
+    rg_cnpj: "${user.rg_cnpj}"
+
+    receipts: [${user.receipts.map(
+      receipt => `
+      {
+        dental_name: "${receipt.dental_name}"
+        code: "${receipt.code}"
+        amount: "${receipt.amount}"
+        files: ["${receipt.files[0] ? receipt.files[0].src : ""}"]
+      }
+    `
+    )}]
+  }) {
+    _id
+  }
+}`;
+
 class Landing extends React.Component {
   constructor() {
     super();
     this.state = {
+      loading: false,
       isRegisterModalOpened: false,
       isLoginModalOpened: false,
       form: {
@@ -326,6 +357,7 @@ class Landing extends React.Component {
 
   async handleSubmitRegisterModal(ev) {
     ev.preventDefault();
+    this.setState({ loading: true });
     const { form } = this.state;
 
     const newReceipts = await Promise.all(
@@ -348,7 +380,14 @@ class Landing extends React.Component {
     );
 
     form.receipts = newReceipts;
-    this.setState({ form });
+
+    ADD_USER_MUTATION(form);
+    const res = await axios.post(`http://localhost:80/graphql`, {
+      query: ADD_USER_MUTATION(form)
+    });
+    console.log(res);
+    navigate("/thanks");
+    this.setState({ loading: false, form });
   }
 
   render() {
@@ -551,6 +590,7 @@ class Landing extends React.Component {
           handleFileUploaderChange={this.handleFileUploaderChange}
           handleRemoveUploadedFile={this.handleRemoveUploadedFile}
           handleSubmit={this.handleSubmitRegisterModal}
+          loading={this.state.loading}
         />
         <LoginModal
           isModalOpened={this.state.isLoginModalOpened}

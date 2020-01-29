@@ -34,9 +34,19 @@ const RegisterModal = props => (
 
       <ReceiptsForm receipts={props.form.receipts} {...props} />
 
-      <Button type="submit">Concluir e Pontuar!</Button>
+      <Button type="submit">
+        {props.loading ? "Enviando..." : "Concluir e Pontuar!"}
+      </Button>
     </form>
   </BlueModal>
 );
 
 export default RegisterModal;
+
+RegisterModal.defaultProps = {
+  form: {
+    receipts: []
+  },
+  scope: {},
+  handleSubmit: () => {}
+};
