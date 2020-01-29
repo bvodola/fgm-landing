@@ -10,6 +10,7 @@ import LoginModal from "./_components/LoginModal";
 import theme from "../../theme";
 import { handleCloudinaryUpload } from "../../helpers";
 import { navigate } from "gatsby";
+import config from "../../config";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -381,8 +382,8 @@ class Landing extends React.Component {
 
     form.receipts = newReceipts;
 
-    ADD_USER_MUTATION(form);
-    const res = await axios.post(`http://localhost:80/graphql`, {
+    http: ADD_USER_MUTATION(form);
+    const res = await axios.post(`${config.BACKEND_URL}/graphql`, {
       query: ADD_USER_MUTATION(form)
     });
     console.log(res);
@@ -538,10 +539,17 @@ class Landing extends React.Component {
           <Row>
             <Col>
               <H1>Ganhadores</H1>
-              <h2>Confira quem já ganhou nosso sorteio</h2>
+              <h2>Confira aqui os sorteados</h2>
             </Col>
           </Row>
           <Row>
+            <Col>
+              <h2>
+                <b>Primeiro sorteio dia 06/03/2020</b>
+              </h2>
+            </Col>
+          </Row>
+          {/* <Row>
             <Col>
               <img src="/ganhador-1.png" alt="Ganhador 1" />
               <b>João Freitas</b>
@@ -557,7 +565,7 @@ class Landing extends React.Component {
               <b>Jaqueline Soares</b>
               <p>1 kit Opus</p>
             </Col>
-          </Row>
+          </Row> */}
         </WinnersSection>
         <RulesSection id="regulamento">
           <Row>
