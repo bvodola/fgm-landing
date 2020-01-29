@@ -7,6 +7,7 @@ import { Row, Col } from "../../components/Grid";
 import RegisterModal from "./_components/RegisterModal";
 import LoginModal from "./_components/LoginModal";
 import theme from "../../theme";
+import { handleAwsUpload } from "../../helpers";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -249,10 +250,42 @@ class Landing extends React.Component {
     super();
     this.state = {
       isRegisterModalOpened: false,
-      isLoginModalOpened: false
+      isLoginModalOpened: false,
+      form: {
+        receipts: [
+          {
+            dental_name: "",
+            code: "",
+            amount: "",
+            files: []
+          }
+        ]
+      }
     };
     this.toggleRegisterModal = this.toggleRegisterModal.bind(this);
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
+    this.addReceipt = this.addReceipt.bind(this);
+    this.removeReceipt = this.removeReceipt.bind(this);
+    this.handleRemoveUploadedFile = this.handleRemoveUploadedFile.bind(this);
+    this.handleFileUploaderChange = this.handleFileUploaderChange.bind(this);
+    this.handleSubmitRegisterModal = this.handleSubmitRegisterModal.bind(this);
+  }
+
+  addReceipt() {
+    const { form } = this.state;
+    form.receipts.push({
+      dental_name: "",
+      code: "",
+      amount: "",
+      files: []
+    });
+    this.setState({ form });
+  }
+
+  removeReceipt(i) {
+    const { form } = this.state;
+    form.receipts.splice(i, 1);
+    this.setState({ form });
   }
 
   toggleRegisterModal(ev) {
@@ -263,6 +296,48 @@ class Landing extends React.Component {
   toggleLoginModal(ev) {
     ev.preventDefault();
     this.setState({ isLoginModalOpened: !this.state.isLoginModalOpened });
+  }
+
+  handleFileUploaderChange(ev, receiptIndex) {
+    const targetFiles = ev.target.files;
+    const fileURLs = Array.from(targetFiles).map(f => ({
+      _id: Math.random()
+        .toString(36)
+        .substring(7),
+      src: URL.createObjectURL(f),
+      file: f
+    }));
+
+    console.log(receiptIndex, fileURLs);
+
+    let { form } = this.state;
+    form.receipts[receiptIndex].files = fileURLs;
+    this.setState({ form });
+    ev.target.value = null;
+  }
+
+  handleRemoveUploadedFile(_id, receiptIndex) {
+    console.log(receiptIndex, _id);
+    let { form } = this.state;
+    let files = form.receipts[receiptIndex].files;
+    form.receipts[receiptIndex].files = files.filter(f => f._id !== _id);
+    this.setState({ form });
+  }
+
+  handleSubmitRegisterModal(ev) {
+    ev.preventDefault();
+    console.log(this.state.form);
+
+    // Upload each file before continuing
+    this.state.form.receipts.forEach(r => {
+      r.files.forEach(async file => {
+        const url = await handleAwsUpload(
+          file.file,
+          `http://localhost:3000/aws/s3/sign`
+        );
+        console.log(url);
+      });
+    });
   }
 
   render() {
@@ -372,34 +447,34 @@ class Landing extends React.Component {
             <Col>
               <h3>Como faço para participar?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                mattis lobortis semper. Aliquam libero est, pharetra id risus
-                quis, vehicula pellentesque eros. Donec vitae odio id nunc
-                tristique convallis ut et turpis.
+                Para participar é fácil. Compre produtos FGM através de seus
+                consultores ou por meio de seus distribuidores oficiais,
+                preencha o cadastro no site e cadastre a nota fiscal dos
+                produtos. Lembre-se: é importante guardar sua nota fiscal, caso
+                seja sorteado, será solicitado para conferência dos dados.
               </p>
               <h3>Qual período de validade da promoção?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                mattis lobortis semper. Aliquam libero est, pharetra id risus
-                quis, vehicula pellentesque eros. Donec vitae odio id nunc
-                tristique convallis ut et turpis.
+                A promoção é válida para as compras de produtos FGM através de
+                seus consultores ou por meio de seus distribuidores oficiais no
+                período de 29/01/2020 a 25/10/2020.
               </p>
             </Col>
 
             <Col>
               <h3>Qual valor em produtos preciso comprar?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                mattis lobortis semper. Aliquam libero est, pharetra id risus
-                quis, vehicula pellentesque eros. Donec vitae odio id nunc
-                tristique convallis ut et turpis.
+                A cada R$120,00 em produtos de estética você gera 01 (um) número
+                da sorte e a cada R$200,00 em produtos de implante você gera 01
+                (um) número da sorte. Todos os meses serão sorteados mais de 70
+                prêmios entre vale-presentes e kits FGM. Com 05 (cinco) números
+                da sorte você concorre ao prêmio final.
               </p>
               <h3>Como faço para recuperar meu cadastro?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                mattis lobortis semper. Aliquam libero est, pharetra id risus
-                quis, vehicula pellentesque eros. Donec vitae odio id nunc
-                tristique convallis ut et turpis.
+                Basta clicar em Login (no topo desta página) e então clicar em
+                Recuperar Senha. As instruções de recuperação de senha serão
+                enviadas para o e-mail que você cadastrou.
               </p>
             </Col>
           </Row>
@@ -456,8 +531,15 @@ class Landing extends React.Component {
           </p>
         </Footer>
         <RegisterModal
+          scope={this}
           isModalOpened={this.state.isRegisterModalOpened}
           closeModal={this.toggleRegisterModal}
+          form={this.state.form}
+          addReceipt={this.addReceipt}
+          removeReceipt={this.removeReceipt}
+          handleFileUploaderChange={this.handleFileUploaderChange}
+          handleRemoveUploadedFile={this.handleRemoveUploadedFile}
+          handleSubmit={this.handleSubmitRegisterModal}
         />
         <LoginModal
           isModalOpened={this.state.isLoginModalOpened}

@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export default styled.input`
   border-radius: 30px;
-  border: none;
-  outline: none;
   padding: 12px 16px;
-  width: 100%;
+  border: none;
   height: 48px;
+  outline: none;
+  width: 100%;
   font-size: 20px;
 `;
