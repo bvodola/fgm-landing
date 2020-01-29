@@ -332,6 +332,7 @@ class Landing extends React.Component {
 
   handleFileUploaderChange(ev, receiptIndex) {
     const targetFiles = ev.target.files;
+    console.log(targetFiles);
     const fileURLs = Array.from(targetFiles).map(f => ({
       _id: Math.random()
         .toString(36)
@@ -342,10 +343,17 @@ class Landing extends React.Component {
 
     console.log(receiptIndex, fileURLs);
 
-    let { form } = this.state;
-    form.receipts[receiptIndex].files = fileURLs;
-    this.setState({ form });
-    ev.target.value = null;
+    if (
+      typeof fileURLs[0] !== "undefined" &&
+      fileURLs[0].file.size >= 1048576
+    ) {
+      alert("O arquivo da nota deve ter no máximo 10MB");
+    } else {
+      let { form } = this.state;
+      form.receipts[receiptIndex].files = fileURLs;
+      this.setState({ form });
+      ev.target.value = null;
+    }
   }
 
   handleRemoveUploadedFile(_id, receiptIndex) {
@@ -357,38 +365,40 @@ class Landing extends React.Component {
   }
 
   async handleSubmitRegisterModal(ev) {
-    ev.preventDefault();
-    this.setState({ loading: true });
-    const { form } = this.state;
+    try {
+      ev.preventDefault();
+      this.setState({ loading: true });
+      const { form } = this.state;
 
-    const newReceipts = await Promise.all(
-      form.receipts.map(async receipt => {
-        const files = await Promise.all(
-          receipt.files.map(async file => {
-            const res = await handleCloudinaryUpload(file.file);
-            console.log(res);
-            return {
-              ...file,
-              src: res.data.url
-            };
-          })
-        );
-        return {
-          ...receipt,
-          files
-        };
-      })
-    );
+      const newReceipts = await Promise.all(
+        form.receipts.map(async receipt => {
+          const files = await Promise.all(
+            receipt.files.map(async file => {
+              const res = await handleCloudinaryUpload(file.file);
+              console.log(res);
+              return {
+                ...file,
+                src: typeof res !== "undefined" ? res.data.url : ""
+              };
+            })
+          );
+          return {
+            ...receipt,
+            files
+          };
+        })
+      );
 
-    form.receipts = newReceipts;
-
-    http: ADD_USER_MUTATION(form);
-    const res = await axios.post(`${config.BACKEND_URL}/graphql`, {
-      query: ADD_USER_MUTATION(form)
-    });
-    console.log(res);
-    navigate("/thanks");
-    this.setState({ loading: false, form });
+      form.receipts = newReceipts;
+      const res = await axios.post(`${config.BACKEND_URL}/graphql`, {
+        query: ADD_USER_MUTATION(form)
+      });
+      console.log(res);
+      navigate("/thanks");
+      this.setState({ loading: false, form });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
