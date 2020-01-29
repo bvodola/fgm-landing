@@ -345,7 +345,7 @@ class Landing extends React.Component {
 
     if (
       typeof fileURLs[0] !== "undefined" &&
-      fileURLs[0].file.size >= 1048576
+      fileURLs[0].file.size >= 10485760
     ) {
       alert("O arquivo da nota deve ter no máximo 10MB");
     } else {
