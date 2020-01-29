@@ -7,7 +7,7 @@ import { Row, Col } from "../../components/Grid";
 import RegisterModal from "./_components/RegisterModal";
 import LoginModal from "./_components/LoginModal";
 import theme from "../../theme";
-import { handleAwsUpload } from "../../helpers";
+import { handleCloudinaryUpload } from "../../helpers";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -324,20 +324,31 @@ class Landing extends React.Component {
     this.setState({ form });
   }
 
-  handleSubmitRegisterModal(ev) {
+  async handleSubmitRegisterModal(ev) {
     ev.preventDefault();
-    console.log(this.state.form);
+    const { form } = this.state;
 
-    // Upload each file before continuing
-    this.state.form.receipts.forEach(r => {
-      r.files.forEach(async file => {
-        const url = await handleAwsUpload(
-          file.file,
-          `http://localhost:3000/aws/s3/sign`
+    const newReceipts = await Promise.all(
+      form.receipts.map(async receipt => {
+        const files = await Promise.all(
+          receipt.files.map(async file => {
+            const res = await handleCloudinaryUpload(file.file);
+            console.log(res);
+            return {
+              ...file,
+              src: res.data.url
+            };
+          })
         );
-        console.log(url);
-      });
-    });
+        return {
+          ...receipt,
+          files
+        };
+      })
+    );
+
+    form.receipts = newReceipts;
+    this.setState({ form });
   }
 
   render() {
