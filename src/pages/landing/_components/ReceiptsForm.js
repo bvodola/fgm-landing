@@ -64,18 +64,28 @@ const ReceiptsForm = ({
 
         <Label>Dental que realizou a compra</Label>
         <Input
+          required
           {...setFormField(scope, `receipts.${i}.dental_name`)}
           type="string"
         />
 
         <Label>Número da nota fiscal</Label>
-        <Input {...setFormField(scope, `receipts.${i}.code`)} type="string" />
+        <Input
+          required
+          {...setFormField(scope, `receipts.${i}.code`)}
+          type="string"
+        />
 
         <Label>Valor em produtos FGM</Label>
-        <Input {...setFormField(scope, `receipts.${i}.amount`)} type="string" />
+        <Input
+          required
+          {...setFormField(scope, `receipts.${i}.amount`)}
+          type="string"
+        />
 
         <Label>Arquivo da nota fiscal</Label>
         <FileUploader
+          required
           placeholder={<div>Escolher arquivo</div>}
           files={receipt.files}
           formats={".jpg,.jpeg,.pdf"}

@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from "react-helmet";
-import scrollTo from "gatsby-plugin-smoothscroll";
 import { H1 } from "../../components/index";
 import { Row, Col } from "../../components/Grid";
 import theme from "../../theme";
@@ -143,7 +142,7 @@ class Landing extends React.Component {
           </div>
           <ul className="menu">
             <li>
-              <a onClick={() => scrollTo("#home")}>Home</a>
+              <Link to="/landing">Home</Link>
             </li>
           </ul>
         </Nav>
