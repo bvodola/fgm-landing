@@ -410,7 +410,7 @@ class Landing extends React.Component {
         <GlobalStyle />
         <Nav>
           <div className="logo">
-            <img src="/fgm-logo.png" alt="Logo FGM" />
+            <img src="/img/fgm-dental-group.png" alt="Logo FGM" />
           </div>
           <ul className="menu">
             <li>
