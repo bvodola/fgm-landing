@@ -1,8 +1,12 @@
 const config = {
   BACKEND_URL:
     process.env.NODE_ENV === "development"
-      ? "http://localhost:80"
-      : "https://intense-thicket-75118.herokuapp.com"
+      ? "http://localhost:3000"
+      : "https://intense-thicket-75118.herokuapp.com",
+  SYSTEM_URL:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:4000"
+      : "https://sistema.fgmdasorte.com.br"
 };
 
 export default config;

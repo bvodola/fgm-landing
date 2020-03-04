@@ -406,6 +406,13 @@ class Landing extends React.Component {
       <div>
         <Helmet>
           <link href="/fonts/gotham/stylesheet.css" rel="stylesheet" />
+          <link
+            rel="icon"
+            type="image/png"
+            href="/favicon.png"
+            sizes="512x512"
+          />
+          <title>Promoção FGM Dá Sorte</title>
         </Helmet>
         <GlobalStyle />
         <Nav>
@@ -428,9 +435,10 @@ class Landing extends React.Component {
             </li>
             <span>|</span>
             <li className="visible-mobile">
-              <a href="#" onClick={this.toggleLoginModal}>
+              {/* <a href="#" onClick={this.toggleLoginModal}>
                 Login
-              </a>
+              </a> */}
+              <a href={`${config.SYSTEM_URL}/`}>Login</a>
             </li>
             <span>|</span>
             <li>
