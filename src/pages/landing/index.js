@@ -248,6 +248,28 @@ const Footer = styled.footer`
   }
 `;
 
+const WinnersList = styled.ul`
+  margin-top: -20px;
+  margin-bottom: 32px;
+  li {
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+
+    span:first-child {
+      font-weight: bold;
+    }
+
+    span:nth-child(3) {
+      font-style: italic;
+    }
+  }
+
+  li:last-child {
+    border: 0;
+  }
+`;
+
 const ADD_USER_MUTATION = user => `
 mutation {
   addUser(user: {
@@ -557,13 +579,80 @@ class Landing extends React.Component {
           <Row>
             <Col>
               <H1>Ganhadores</H1>
-              <h2>Confira aqui os sorteados</h2>
+              <h2>Confira abaixo a lista de sorteados</h2>
             </Col>
           </Row>
           <Row>
             <Col>
               <h2>
-                <b>Primeiro sorteio dia 06/03/2020</b>
+                <b>Sorteio realizado 06/03/2020</b>
+              </h2>
+              <WinnersList>
+                <li>
+                  <span>
+                    Leonora Cristina da Silva Parente Macedo: Voucher Submarino
+                    R$ 100
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM implantes</span>
+                </li>
+                <li>
+                  <span>
+                    Kamila Nery Grossi Tavares (LIBERTAS ASSISTENCIA
+                    ODONTOLOGICA LTDA): Voucher Submarino R$ 100
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+
+                <li>
+                  <span>
+                    Danielle Sanches Gonçalves ( ODONTO FABBRI SOCIEDADE SIMPLES
+                    PUR): Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Anisio de Souza Filho (ODONTO FABBRI SOCIEDADE SIMPLES PUR):
+                    Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Alceu Pirochetti Junior: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Gutierre</span>
+                </li>
+
+                <li>
+                  <span>
+                    Fabricio Reskalla Amaral: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+
+                <li>
+                  <span>
+                    Analice Paulo Rangel Ferreira: Cesta de Produtos R$ 5.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+              </WinnersList>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h2>
+                <b>Próximo sorteio: dia 07/04/2020</b>
               </h2>
             </Col>
           </Row>
