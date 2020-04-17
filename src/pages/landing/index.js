@@ -270,7 +270,7 @@ const WinnersList = styled.ul`
   }
 `;
 
-const ADD_USER_MUTATION = user => `
+const ADD_USER_MUTATION = (user) => `
 mutation {
   addUser(user: {
     name: "${user.name}"
@@ -284,7 +284,7 @@ mutation {
     rg_cnpj: "${user.rg_cnpj}"
 
     receipts: [${user.receipts.map(
-      receipt => `
+      (receipt) => `
       {
         dental_name: "${receipt.dental_name}"
         code: "${receipt.code}"
@@ -311,10 +311,10 @@ class Landing extends React.Component {
             dental_name: "",
             code: "",
             amount: "",
-            files: []
-          }
-        ]
-      }
+            files: [],
+          },
+        ],
+      },
     };
     this.toggleRegisterModal = this.toggleRegisterModal.bind(this);
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
@@ -331,7 +331,7 @@ class Landing extends React.Component {
       dental_name: "",
       code: "",
       amount: "",
-      files: []
+      files: [],
     });
     this.setState({ form });
   }
@@ -355,12 +355,12 @@ class Landing extends React.Component {
   handleFileUploaderChange(ev, receiptIndex) {
     const targetFiles = ev.target.files;
     console.log(targetFiles);
-    const fileURLs = Array.from(targetFiles).map(f => ({
+    const fileURLs = Array.from(targetFiles).map((f) => ({
       _id: Math.random()
         .toString(36)
         .substring(7),
       src: URL.createObjectURL(f),
-      file: f
+      file: f,
     }));
 
     console.log(receiptIndex, fileURLs);
@@ -382,7 +382,7 @@ class Landing extends React.Component {
     console.log(receiptIndex, _id);
     let { form } = this.state;
     let files = form.receipts[receiptIndex].files;
-    form.receipts[receiptIndex].files = files.filter(f => f._id !== _id);
+    form.receipts[receiptIndex].files = files.filter((f) => f._id !== _id);
     this.setState({ form });
   }
 
@@ -393,27 +393,27 @@ class Landing extends React.Component {
       const { form } = this.state;
 
       const newReceipts = await Promise.all(
-        form.receipts.map(async receipt => {
+        form.receipts.map(async (receipt) => {
           const files = await Promise.all(
-            receipt.files.map(async file => {
+            receipt.files.map(async (file) => {
               const res = await handleCloudinaryUpload(file.file);
               console.log(res);
               return {
                 ...file,
-                src: typeof res !== "undefined" ? res.data.url : ""
+                src: typeof res !== "undefined" ? res.data.url : "",
               };
             })
           );
           return {
             ...receipt,
-            files
+            files,
           };
         })
       );
 
       form.receipts = newReceipts;
       const res = await axios.post(`${config.BACKEND_URL}/graphql`, {
-        query: ADD_USER_MUTATION(form)
+        query: ADD_USER_MUTATION(form),
       });
       console.log(res);
       navigate("/thanks");
@@ -652,7 +652,7 @@ class Landing extends React.Component {
           <Row>
             <Col>
               <h2>
-                <b>Próximo sorteio: dia 07/04/2020</b>
+                <b>Próximo sorteio: dia 17/04/2020</b>
               </h2>
             </Col>
           </Row>
