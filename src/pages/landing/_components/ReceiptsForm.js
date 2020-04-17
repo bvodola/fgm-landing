@@ -51,7 +51,7 @@ const ReceiptsForm = ({
   removeReceipt,
   handleFileUploaderChange,
   handleRemoveUploadedFile,
-  scope
+  scope,
 }) => (
   <div>
     <Label>Notas Fiscais</Label>
@@ -85,12 +85,12 @@ const ReceiptsForm = ({
 
         <Label>Arquivo da nota fiscal</Label>
         <FileUploader
-          required
+          name={`fileUploader${i}`}
           placeholder={<div>Escolher arquivo</div>}
           files={receipt.files}
           formats={".jpg,.jpeg,.pdf"}
-          onChange={ev => handleFileUploaderChange(ev, i)}
-          close={file_id => handleRemoveUploadedFile(file_id, i)}
+          onChange={(ev) => handleFileUploaderChange(ev, i)}
+          close={(file_id) => handleRemoveUploadedFile(file_id, i)}
         />
       </ReceiptBox>
     ))}
@@ -105,5 +105,5 @@ export default ReceiptsForm;
 ReceiptsForm.defaultProps = {
   receipts: [],
   addReceipt: () => {},
-  removeReceipt: () => {}
+  removeReceipt: () => {},
 };

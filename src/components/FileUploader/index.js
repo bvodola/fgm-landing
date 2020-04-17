@@ -91,7 +91,7 @@ const FileUploader = ({
         />
       </React.Fragment>
     ) : (
-      files.map(file => (
+      files.map((file) => (
         <FadeIn key={file._id}>
           <Thumbnail
             src={file.src}
@@ -108,5 +108,5 @@ const FileUploader = ({
 export default FileUploader;
 
 FileUploader.defaultProps = {
-  files: []
+  files: [],
 };

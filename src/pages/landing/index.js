@@ -392,6 +392,19 @@ class Landing extends React.Component {
       this.setState({ loading: true });
       const { form } = this.state;
 
+      // Check receipt files
+      let ARE_FILES_VALIDATED = true;
+      form.receipts.forEach((receipt, i) => {
+        if (receipt.files.length === 0) {
+          alert(`Por favor, anexe os arquivos de todas as suas notas fiscais.`);
+          ARE_FILES_VALIDATED = false;
+          this.setState({ loading: false });
+          return;
+        }
+      });
+
+      if (!ARE_FILES_VALIDATED) return;
+
       const newReceipts = await Promise.all(
         form.receipts.map(async (receipt) => {
           const files = await Promise.all(
