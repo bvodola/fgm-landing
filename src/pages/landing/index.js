@@ -249,6 +249,7 @@ const Footer = styled.footer`
 `;
 
 const WinnersList = styled.ul`
+  width: 100%;
   margin-top: -20px;
   margin-bottom: 32px;
   li {
@@ -595,6 +596,8 @@ class Landing extends React.Component {
               <h2>Confira abaixo a lista de sorteados</h2>
             </Col>
           </Row>
+
+          {/* Sorteio */}
           <Row>
             <Col>
               <h2>
@@ -662,31 +665,90 @@ class Landing extends React.Component {
               </WinnersList>
             </Col>
           </Row>
+
+          {/* Sorteio */}
           <Row>
             <Col>
               <h2>
-                <b>Próximo sorteio: dia 17/04/2020</b>
+                <b>Sorteio realizado 17/04/2020</b>
+              </h2>
+              <WinnersList>
+                <li>
+                  <span>
+                    Kamila Nery Grossi Tavares: Voucher Submarino R$ 100
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+                <li>
+                  <span>Alceu Pirochetti Júnior: Voucher Submarino R$ 100</span>
+                  <br />
+                  <span>Onde comprou: FGM implantes</span>
+                </li>
+
+                <li>
+                  <span>Fabioneide Cândido: Cesta de Produtos R$ 4000</span>
+                  <br />
+                  <span>Onde comprou: Ice Comércio de Produtos</span>
+                </li>
+
+                <li>
+                  <span>Anisio de Souza Filho: Cesta de Produtos R$ 4.000</span>
+                  <br />
+                  <span>Onde comprou: FGM implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Fernanda Angeloni de Souza: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Lorena Poltronieri Rangel: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Gutierre</span>
+                </li>
+
+                <li>
+                  <span>
+                    Daiana Melo Pomponet Viana: Cesta de Produtos R$ 5.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+
+                <li>
+                  <span>
+                    Carlos Fernando Sousa de Carvalho: Cesta de Produtos R$
+                    5.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+
+                <li>
+                  <span>Giovani de Bona: Cesta de Produtos R$ 5.000</span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+              </WinnersList>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <h2>
+                <b>Próximo sorteio: 11/05/2020</b>
               </h2>
             </Col>
           </Row>
-          {/* <Row>
-            <Col>
-              <img src="/ganhador-1.png" alt="Ganhador 1" />
-              <b>João Freitas</b>
-              <p>1 kit Nanosynt</p>
-            </Col>
-            <Col>
-              <img src="/ganhador-2.png" alt="Ganhador 2" />
-              <b>Nicole Almeida</b>
-              <p>1 kit Vitra</p>
-            </Col>
-            <Col>
-              <img src="/ganhador-3.png" alt="Ganhador 3" />
-              <b>Jaqueline Soares</b>
-              <p>1 kit Opus</p>
-            </Col>
-          </Row> */}
         </WinnersSection>
+
         <RulesSection id="regulamento">
           <Row>
             <Col>
