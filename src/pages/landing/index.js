@@ -597,7 +597,9 @@ class Landing extends React.Component {
             </Col>
           </Row>
 
+          {/* ******* */}
           {/* Sorteio */}
+          {/* ******* */}
           <Row>
             <Col>
               <h2>
@@ -666,7 +668,9 @@ class Landing extends React.Component {
             </Col>
           </Row>
 
+          {/* ******* */}
           {/* Sorteio */}
+          {/* ******* */}
           <Row>
             <Col>
               <h2>
@@ -740,10 +744,163 @@ class Landing extends React.Component {
             </Col>
           </Row>
 
+          {/* ******* */}
+          {/* Sorteio */}
+          {/* ******* */}
           <Row>
             <Col>
               <h2>
-                <b>Próximo sorteio: 11/05/2020</b>
+                <b>Sorteio realizado 11/05/2020</b>
+              </h2>
+              <WinnersList>
+                <li>
+                  <span>Giovani de Bona: Voucher Submarino R$ 100</span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+                <li>
+                  <span>Rogério Alves Toscano: Voucher Submarino R$ 100</span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+
+                <li>
+                  <span>
+                    Ângelo Zaccaariotto Neto: Voucher Submarino R$ 100
+                  </span>
+                  <br />
+                  <span>Onde comprou: Gutierre</span>
+                </li>
+
+                <li>
+                  <span>Mateus Souza Ribeiro: Cesta de Produtos R$ 4.000</span>
+                  <br />
+                  <span>Onde comprou: FGM implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Murilo Afonso Rorbacker: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Hericka Torres Urban Caldas: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Gutierre</span>
+                </li>
+
+                <li>
+                  <span>
+                    Daniella Sanches Gonçalves: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+
+                <li>
+                  <span>Rodrigo Gomes Mafra: Cesta de Produtos R$ 5.000</span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+
+                <li>
+                  <span>Renata Horigome: Cesta de Produtos R$ 5.000</span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+              </WinnersList>
+            </Col>
+          </Row>
+
+          {/* ******* */}
+          {/* Sorteio */}
+          {/* ******* */}
+          <Row>
+            <Col>
+              <h2>
+                <b>Sorteio realizado 05/06/2020</b>
+              </h2>
+              <WinnersList>
+                <li>
+                  <span>Caroline Antunes Jacon: Voucher Submarino R$ 200</span>
+                  <br />
+                  <span>Onde comprou: Dental Curitiba</span>
+                </li>
+                <li>
+                  <span>Rogério Alves Toscano: Voucher Submarino R$ 200</span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+
+                <li>
+                  <span>Igor Mey: Cesta de Produtos R$ 4.000</span>
+                  <br />
+                  <span>Onde comprou: Dental Plus</span>
+                </li>
+
+                <li>
+                  <span>
+                    Analice Paulo Rangel Ferreira: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+
+                <li>
+                  <span>
+                    Márcio Augusto Bonat Cordeiro: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+
+                <li>
+                  <span>
+                    Andreza Cristina Sgrott Bet: Cesta de Produtos R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Valquiria Bueno de Moraes Silva: Cesta de Produtos R$ 5.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Med Sul</span>
+                </li>
+
+                <li>
+                  <span>
+                    Fabricio Reskalla Amaral: Cesta de Produtos R$ 5.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Marcus Vinicius Rocha Martins: Cesta de Produtos R$ 5.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+              </WinnersList>
+            </Col>
+          </Row>
+
+          {/* *************** */}
+          {/* Proximo Sorteio */}
+          {/* *************** */}
+          <Row>
+            <Col>
+              <h2>
+                <b>Próximo sorteio: 07/07/2020</b>
               </h2>
             </Col>
           </Row>
