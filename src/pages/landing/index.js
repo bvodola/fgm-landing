@@ -894,13 +894,84 @@ class Landing extends React.Component {
             </Col>
           </Row>
 
+          {/* ******* */}
+          {/* Sorteio */}
+          {/* ******* */}
+          <Row>
+            <Col>
+              <h2>
+                <b>Sorteio realizado 07/07/2020</b>
+              </h2>
+              <WinnersList>
+                <li>
+                  <span>Renata Horigome: Voucher Submarino R$ 200</span>
+                  <br />
+                  <span>Onde comprou: Dental Cremer</span>
+                </li>
+                <li>
+                  <span>Raul Muxfeldt: Voucher Submarino R$ 200</span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+
+                <li>
+                  <span>
+                    Eduarda Tenenberg Pinheiro da Nóbrega: Cesta de Produtos R$
+                    4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Speed</span>
+                </li>
+
+                <li>
+                  <span>
+                    José Humberto Golçalves da Silva Júnior: Cesta de Produtos
+                    R$ 4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Alagoas</span>
+                </li>
+
+                <li>
+                  <span>
+                    Bráulio Aparecido Ferreira da Cunha: Cesta de Produtos R$
+                    4.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+
+                <li>
+                  <span>Naila Gabani: Cesta de Produtos R$ 4.000</span>
+                  <br />
+                  <span>Onde comprou: Gutierre</span>
+                </li>
+
+                <li>
+                  <span>Dalva Soares Lauton: Cesta de Produtos R$ 5.000</span>
+                  <br />
+                  <span>Onde comprou: FGM Implantes</span>
+                </li>
+
+                <li>
+                  <span>
+                    Teresa Cristina Bennemann de Souza: Cesta de Produtos R$
+                    5.000
+                  </span>
+                  <br />
+                  <span>Onde comprou: Dental Shop</span>
+                </li>
+              </WinnersList>
+            </Col>
+          </Row>
+
           {/* *************** */}
           {/* Proximo Sorteio */}
           {/* *************** */}
           <Row>
             <Col>
               <h2>
-                <b>Próximo sorteio: 07/07/2020</b>
+                <b>Próximo sorteio: 07/08/2020</b>
               </h2>
             </Col>
           </Row>
