@@ -12,6 +12,59 @@ import { handleCloudinaryUpload } from "../../helpers";
 import { navigate } from "gatsby";
 import config from "../../config";
 
+const RESULTS = [
+  {
+    date: "08/08/2020",
+    winners: [
+      {
+        name: "Cláudio Henrique Sales Ximenes Ávila",
+        prize: "Voucher Submarino R$ 200",
+        company: "Dental São Sebastião",
+      },
+      {
+        name: "Rodrigo Gomes Mafra",
+        prize: "Voucher Submarino R$ 200",
+        company: "Dental Cremer",
+      },
+      {
+        name: "Rafael Altarugio Godoy",
+        prize: "Voucher Submarino R$ 200",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Cesta de Produtos R$ 4.000",
+        prize: "Fernanda Angeloni de Souza",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Cesta de Produtos R$ 4.000",
+        prize: "Abigail Borges Prado",
+        company: "Gutierre",
+      },
+      {
+        name: "Julia Gabiroboertz Cardoso",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "Coelho Dental L&M de Pilares",
+      },
+      {
+        name: "Cassius Paranhos Couri",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Mateus Souza Ribeiro",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Carlos Fernando Sousa de Carvalho",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "Dental Cremer",
+      },
+    ],
+  },
+];
+
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -596,7 +649,6 @@ class Landing extends React.Component {
               <h2>Confira abaixo a lista de sorteados</h2>
             </Col>
           </Row>
-
           {/* ******* */}
           {/* Sorteio */}
           {/* ******* */}
@@ -667,7 +719,6 @@ class Landing extends React.Component {
               </WinnersList>
             </Col>
           </Row>
-
           {/* ******* */}
           {/* Sorteio */}
           {/* ******* */}
@@ -743,7 +794,6 @@ class Landing extends React.Component {
               </WinnersList>
             </Col>
           </Row>
-
           {/* ******* */}
           {/* Sorteio */}
           {/* ******* */}
@@ -816,7 +866,6 @@ class Landing extends React.Component {
               </WinnersList>
             </Col>
           </Row>
-
           {/* ******* */}
           {/* Sorteio */}
           {/* ******* */}
@@ -893,7 +942,6 @@ class Landing extends React.Component {
               </WinnersList>
             </Col>
           </Row>
-
           {/* ******* */}
           {/* Sorteio */}
           {/* ******* */}
@@ -965,13 +1013,38 @@ class Landing extends React.Component {
             </Col>
           </Row>
 
+          {/* ******* */}
+          {/* Sorteio */}
+          {/* ******* */}
+          {RESULTS.map((result) => (
+            <Row>
+              <Col>
+                <h2>
+                  <b>Sorteio realizado {result.date}</b>
+                </h2>
+
+                <WinnersList>
+                  {result.winners.map((winner) => (
+                    <li>
+                      <span>
+                        {winner.name}: {winner.prize}
+                      </span>
+                      <br />
+                      <span>Onde comprou: {winner.company}</span>
+                    </li>
+                  ))}
+                </WinnersList>
+              </Col>
+            </Row>
+          ))}
+
           {/* *************** */}
           {/* Proximo Sorteio */}
           {/* *************** */}
           <Row>
             <Col>
               <h2>
-                <b>Próximo sorteio: 07/08/2020</b>
+                <b>Próximo sorteio: 08/09/2020</b>
               </h2>
             </Col>
           </Row>
