@@ -1151,7 +1151,7 @@ class Landing extends React.Component {
           <Row>
             <Col>
               <h2>
-                <b>Próximo sorteio: 08/09/2020</b>
+                <b>Sorteio Final: 26/10/2020</b>
               </h2>
             </Col>
           </Row>
