@@ -63,6 +63,113 @@ const RESULTS = [
       },
     ],
   },
+
+  {
+    date: "08/09/2020",
+    winners: [
+      {
+        name: "Angelo Marcelo Tirado dos Santos",
+        prize: "Voucher Submarino R$ 300",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Teresa Bennemann",
+        prize: "Voucher Submarino R$ 300",
+        company: "Dental Shop",
+      },
+      {
+        name: "Maria de Fátima Lemos Duarte",
+        prize: "Voucher Submarino R$ 300",
+        company: "Dental Cremer",
+      },
+      {
+        name: "Marcus Vinicius Rocha Martins",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Nilo Segheto Júnior",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "Dental Odonto Cirúrgica",
+      },
+      {
+        name: "Daiana Melo Pomponet Viana",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "Dental Cremer",
+      },
+      {
+        name: "Daniel Salles",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "Gutierre",
+      },
+      {
+        name: "Raul Muxfeldt",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "Dental Speed",
+      },
+      {
+        name: "Roberto Ventura Dallacqua",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "FGM Implantes",
+      },
+    ],
+  },
+
+  {
+    date: "08/10/2020",
+    winners: [
+      {
+        name: "Caroline Antunes Jacon	",
+        prize: "Voucher Submarino R$ 300",
+        company: "Dental Curitibana",
+      },
+      {
+        name: "Aline do Carmo França Botelho",
+        prize: "Voucher Submarino R$ 300",
+        company: "Dental Cremer",
+      },
+      {
+        name: "Franceanne Dambros Flach",
+        prize: "Voucher Submarino R$ 300",
+        company: "Dental Med Sul",
+      },
+      {
+        name: "Renato de Melo Cassini",
+        prize: "Voucher Submarino R$ 300",
+        company: "Dental Med Sul",
+      },
+      {
+        name: "Andre Rodrigo Santos Mendes",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Ana Tânia Miranda da Silva",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "Dental Cremer",
+      },
+      {
+        name: "Ângelo Zaccariotto Neto",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "Gutierre",
+      },
+      {
+        name: "Teresa Bennemann",
+        prize: "Cesta de Produtos R$ 4.000",
+        company: "Dental Shop",
+      },
+      {
+        name: "Daniel Tamashiro Higa",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "FGM Implantes",
+      },
+      {
+        name: "Cláudio Henrique Sales Ximenes Ávila",
+        prize: "Cesta de Produtos R$ 5.000",
+        company: "Dental São Sebastião",
+      },
+    ],
+  },
 ];
 
 const GlobalStyle = createGlobalStyle`
