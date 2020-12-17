@@ -170,6 +170,17 @@ const RESULTS = [
       },
     ],
   },
+
+  {
+    date: "26/10/2020",
+    winners: [
+      {
+        name: "Danielle Sanches Gonçalves",
+        prize: "Viagem para a IDS",
+        company: "Dental Speed",
+      },
+    ],
+  },
 ];
 
 const GlobalStyle = createGlobalStyle`
@@ -1148,13 +1159,13 @@ class Landing extends React.Component {
           {/* *************** */}
           {/* Proximo Sorteio */}
           {/* *************** */}
-          <Row>
+          {/* <Row>
             <Col>
               <h2>
                 <b>Sorteio Final: 26/10/2020</b>
               </h2>
             </Col>
-          </Row>
+          </Row> */}
         </WinnersSection>
 
         <RulesSection id="regulamento">
